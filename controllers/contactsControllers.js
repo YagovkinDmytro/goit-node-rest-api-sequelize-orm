@@ -2,7 +2,7 @@ import * as contactsService from "../services/contactsServices.js";
 import HttpError from "../helpers/HttpError.js";
 import ctrlWrapper from "../decorators/ctrlWrapper.js";
 
-const getAllContacts = async (req, res) => {
+const getAllContacts = async (_, res) => {
   const result = await contactsService.listContacts();
   res.json(result);
 };
