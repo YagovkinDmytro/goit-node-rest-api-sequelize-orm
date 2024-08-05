@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-import dotenv from "dotenv/config";
+import "dotenv/config";
 import sequelize from "./db/sequelize.js";
 import contactsRouter from "./routes/contactsRouter.js";
 
@@ -22,13 +22,16 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message });
 });
 
+const { PORT = 3000 } = process.env;
+const port = Number(PORT);
 try {
   await sequelize.authenticate();
-  console.log("Connection has been established successfully.");
+  console.log("Database connection successful.");
 } catch (error) {
   console.error("Unable to connect to the database:", error);
+  process.exit(1);
 }
 
-app.listen(3000, () => {
-  console.log("Server is running. Use our API on port: 3000");
+app.listen(port, () => {
+  console.log(`Server is running. Use our API on port: ${port}`);
 });

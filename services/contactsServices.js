@@ -3,6 +3,8 @@ import path from "node:path";
 import DetectFileEncodingAndLanguage from "detect-file-encoding-and-language";
 import { nanoid } from "nanoid";
 
+import Contact from "../db/models/Contact.js";
+
 const contactsPath = path.resolve("db", "contacts.json");
 
 const updateContacts = (contacts) =>
