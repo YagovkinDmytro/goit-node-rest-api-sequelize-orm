@@ -20,6 +20,6 @@ const User = sequelize.define("contact", {
   },
 });
 
-// User.sync();
+// await User.sync();
 
 export default User;
